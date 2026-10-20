@@ -1,0 +1,10 @@
+{
+  "servers": {
+    "github-telemetry": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["${workspaceFolder}/src/stdio.js"],
+      "cwd": "${workspaceFolder}"
+    }
+  }
+}

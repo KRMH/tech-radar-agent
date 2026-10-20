@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-10-20",
+  "scope": "Starter catalogue for web UI, server-rendered websites and cross-platform mobile. Not exhaustive; verify functional claims from current official documentation when research tools are available.",
+  "profiles": {
+    "web-ui": {
+      "description": "Interactive browser interfaces and internal dashboards; compare UI library/framework scope explicitly.",
+      "candidates": ["react", "vue", "angular", "svelte", "preact"]
+    },
+    "native-mobile": {
+      "description": "Cross-platform installed mobile apps. Clarify React versus React Native. Return fewer alternatives if the requested rendering/runtime constraints exclude other approaches.",
+      "candidates": ["react-native", "flutter", "nativescript"]
+    },
+    "hybrid-mobile": {
+      "description": "Installed mobile applications where web UI reuse and a hybrid runtime may be acceptable. These approaches differ and are not interchangeable libraries.",
+      "candidates": ["ionic", "react-native", "flutter", "nativescript"]
+    },
+    "server-rendered-web": {
+      "description": "Websites requiring server rendering or prerendering. Compare application frameworks; do not silently substitute them for the underlying UI library.",
+      "candidates": ["nextjs", "nuxt", "sveltekit", "astro"]
+    }
+  },
+  "technologies": [
+    {
+      "id": "react", "name": "React", "aliases": ["reactjs", "react.js"],
+      "role": "Web UI library", "ecosystem": "React",
+      "repository": {"owner": "react", "repo": "react"},
+      "documentation": "https://react.dev/learn",
+      "selection_note": "A UI foundation; compare a chosen app framework separately when routing or server rendering drives the decision."
+    },
+    {
+      "id": "vue", "name": "Vue", "aliases": ["vuejs", "vue.js"],
+      "role": "Progressive web UI framework", "ecosystem": "Vue",
+      "repository": {"owner": "vuejs", "repo": "core"},
+      "documentation": "https://vuejs.org/guide/introduction.html",
+      "selection_note": "Web UI candidate; Nuxt is a separate application framework in the Vue ecosystem."
+    },
+    {
+      "id": "angular", "name": "Angular", "aliases": [],
+      "role": "Web application framework", "ecosystem": "Angular",
+      "repository": {"owner": "angular", "repo": "angular"},
+      "documentation": "https://angular.dev/overview",
+      "selection_note": "Broader application framework scope than a standalone UI library; account for stack and team preferences."
+    },
+    {
+      "id": "svelte", "name": "Svelte", "aliases": [],
+      "role": "Compiler-based web UI framework", "ecosystem": "Svelte",
+      "repository": {"owner": "sveltejs", "repo": "svelte"},
+      "documentation": "https://svelte.dev/docs/svelte/overview",
+      "selection_note": "Evaluate the UI framework separately from SvelteKit when application routing or server rendering is required."
+    },
+    {
+      "id": "preact", "name": "Preact", "aliases": [],
+      "role": "Web UI library", "ecosystem": "Preact",
+      "repository": {"owner": "preactjs", "repo": "preact"},
+      "documentation": "https://preactjs.com/guide/v10/getting-started/",
+      "selection_note": "Consider when library footprint matters; verify React compatibility for the actual dependencies rather than assuming a drop-in replacement."
+    },
+    {
+      "id": "react-native", "name": "React Native", "aliases": ["react native"],
+      "role": "React-based native application framework", "ecosystem": "React",
+      "repository": {"owner": "facebook", "repo": "react-native"},
+      "documentation": "https://reactnative.dev/docs/getting-started",
+      "selection_note": "Related to React but a distinct project/repository. Confirm this target when a user says React for native mobile."
+    },
+    {
+      "id": "flutter", "name": "Flutter", "aliases": [],
+      "role": "Dart-based multiplatform application framework", "ecosystem": "Flutter/Dart",
+      "repository": {"owner": "flutter", "repo": "flutter"},
+      "documentation": "https://docs.flutter.dev/",
+      "selection_note": "A different language and rendering approach; compare for mobile delivery goals, not JavaScript library interchangeability."
+    },
+    {
+      "id": "nativescript", "name": "NativeScript", "aliases": ["native script"],
+      "role": "Native platform framework with JavaScript/TypeScript runtimes", "ecosystem": "NativeScript",
+      "repository": {"owner": "NativeScript", "repo": "NativeScript"},
+      "documentation": "https://docs.nativescript.org/",
+      "selection_note": "Can use different UI framework integrations; identify the intended flavor and verify platform requirements."
+    },
+    {
+      "id": "ionic", "name": "Ionic Framework", "aliases": ["ionic framework"],
+      "role": "Web UI toolkit for hybrid mobile and web applications", "ecosystem": "Ionic",
+      "repository": {"owner": "ionic-team", "repo": "ionic-framework"},
+      "documentation": "https://ionicframework.com/docs",
+      "selection_note": "Discuss the hybrid/native-runtime distinction and the need for a mobile runtime such as Capacitor; do not label it an equivalent native rendering engine."
+    },
+    {
+      "id": "nextjs", "name": "Next.js", "aliases": ["next", "next.js"],
+      "role": "React application framework", "ecosystem": "React",
+      "repository": {"owner": "vercel", "repo": "next.js"},
+      "documentation": "https://nextjs.org/docs",
+      "selection_note": "Built on React; complementary to React itself. Compare against other application frameworks at this layer."
+    },
+    {
+      "id": "nuxt", "name": "Nuxt", "aliases": ["nuxtjs", "nuxt.js"],
+      "role": "Vue application framework", "ecosystem": "Vue",
+      "repository": {"owner": "nuxt", "repo": "nuxt"},
+      "documentation": "https://nuxt.com/docs/getting-started/introduction",
+      "selection_note": "Built on Vue; compare app-level rendering and deployment requirements rather than treating it as a standalone UI library."
+    },
+    {
+      "id": "sveltekit", "name": "SvelteKit", "aliases": ["svelte kit"],
+      "role": "Svelte application framework", "ecosystem": "Svelte",
+      "repository": {"owner": "sveltejs", "repo": "kit"},
+      "documentation": "https://svelte.dev/docs/kit/introduction",
+      "selection_note": "Built on Svelte; an app-level candidate when routing, data loading or rendering requirements matter."
+    },
+    {
+      "id": "astro", "name": "Astro", "aliases": ["astrojs"],
+      "role": "Web framework with an islands architecture", "ecosystem": "Astro",
+      "repository": {"owner": "withastro", "repo": "astro"},
+      "documentation": "https://docs.astro.build/en/concepts/why-astro/",
+      "selection_note": "Consider the content/interaction mix; can integrate UI components from other ecosystems and is not simply a React replacement."
+    }
+  ]
+}

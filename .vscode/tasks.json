@@ -1,0 +1,22 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "GitHub Telemetry : démarrer le serveur MCP stdio",
+      "type": "process",
+      "command": "node",
+      "args": ["${workspaceFolder}/src/stdio.js"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    },
+    {
+      "label": "GitHub Telemetry : tests",
+      "type": "process",
+      "command": "node",
+      "args": ["--test", "--test-isolation=none", "tests/*.test.js"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    }
+  ]
+}

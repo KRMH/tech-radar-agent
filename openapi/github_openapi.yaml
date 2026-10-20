@@ -1,0 +1,106 @@
+openapi: 3.0.3
+info:
+  title: GitHub Repository Telemetry API
+  description: >-
+    Read-only public GitHub metadata and commits. This is the upstream REST
+    contract, not an MCP server. The plugin calculates commit activity separately.
+  version: 1.0.1
+servers:
+  - url: https://api.github.com
+security: []
+paths:
+  /repos/{owner}/{repo}:
+    parameters:
+      - $ref: '#/components/parameters/Owner'
+      - $ref: '#/components/parameters/Repo'
+    get:
+      operationId: get_repo_details
+      summary: Read repository metadata and statistics
+      responses:
+        '200':
+          description: Repository; open_issues_count includes issues and pull requests.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [private, default_branch, stargazers_count, forks_count, open_issues_count, archived]
+                properties:
+                  private: {type: boolean}
+                  default_branch: {type: string}
+                  html_url: {type: string, format: uri}
+                  stargazers_count: {type: integer}
+                  forks_count: {type: integer}
+                  open_issues_count: {type: integer}
+                  archived: {type: boolean}
+                  pushed_at: {type: string, format: date-time, nullable: true}
+        '403': {description: Access denied or API rate limit reached}
+        '404': {description: Repository unavailable}
+        '429': {description: Rate limit reached}
+  /repos/{owner}/{repo}/commits:
+    parameters:
+      - $ref: '#/components/parameters/Owner'
+      - $ref: '#/components/parameters/Repo'
+    get:
+      operationId: get_recent_commits
+      summary: Read commits in a fixed time window, including merge commits
+      parameters:
+        - name: sha
+          in: query
+          schema: {type: string}
+          description: Branch or SHA; defaults to the default branch.
+        - name: since
+          in: query
+          schema: {type: string, format: date-time}
+        - name: until
+          in: query
+          schema: {type: string, format: date-time}
+        - name: per_page
+          in: query
+          schema: {type: integer, minimum: 1, maximum: 100, default: 10}
+        - name: page
+          in: query
+          schema: {type: integer, minimum: 1, default: 1}
+      responses:
+        '200':
+          description: Commit page; follow the Link header for pagination.
+          headers:
+            Link:
+              schema: {type: string}
+              description: Pagination links including rel=next when more results exist.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  required: [sha, commit]
+                  properties:
+                    sha: {type: string}
+                    html_url: {type: string, format: uri}
+                    commit:
+                      type: object
+                      required: [message, committer]
+                      properties:
+                        message: {type: string}
+                        committer:
+                          type: object
+                          required: [date]
+                          properties:
+                            date: {type: string, format: date-time}
+        '403': {description: Access denied or API rate limit reached}
+        '404': {description: Repository unavailable}
+        '409': {description: Conflict; may indicate an empty repository}
+        '422': {description: Invalid query}
+        '429': {description: Rate limit reached}
+components:
+  parameters:
+    Owner:
+      name: owner
+      in: path
+      required: true
+      schema: {type: string}
+    Repo:
+      name: repo
+      in: path
+      required: true
+      schema: {type: string}
