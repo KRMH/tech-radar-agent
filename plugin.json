@@ -1,0 +1,17 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "github-telemetry",
+  "version": "0.1.0",
+  "description": "Fetches repository metrics, commit velocity, and health indicators from GitHub for Tech Radar evaluation.",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "GitHub Telemetry",
+        "shortDescription": "Public GitHub metrics",
+        "longDescription": "Public repository metrics and commit activity for Tech Radar evaluation. Read-only, without a GitHub token.",
+        "capabilities": [],
+        "defaultPrompt": "Analyse les statistiques et l’activité des commits d’un dépôt GitHub public avec GitHub Telemetry."
+      }
+    }
+  }
+}
