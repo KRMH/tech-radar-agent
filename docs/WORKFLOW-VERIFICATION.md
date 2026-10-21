@@ -1,4 +1,14 @@
-# Agent and skill verification — 20 October 2026
+# Agent and skill verification — updated 21 October 2026
+
+## Current live-discovery update
+
+- Configured Exa as the primary hosted MCP search connection with its OAuth login flow, followed by Tavily in keyless mode.
+- Added `discovery/providers.json` to set provider order and enable/disable flags, restored the local technology catalogue as the last offline fallback, and updated the agent, skill, startup guide and acceptance prompts.
+- The provider fallback and Exa OAuth setup have not yet been exercised in VS Code. The earlier test results below apply to the GitHub Telemetry code and the earlier discovery workflow only.
+
+> Historical note: the checks below describe the earlier catalogue-based workflow and redirect fix. They do not verify the Exa/Tavily fallback behavior or the Exa OAuth flow added afterward.
+
+The current discovery setup is structurally covered by `tests/discovery-config.test.js`: it checks provider entries and tool names, keeps the catalogue last while allowing the live providers to be reordered or disabled, verifies the MCP endpoints, and checks the restored catalogue's link/repository fields. A live Exa OAuth session and actual quota-triggered fallback in VS Code remain to be confirmed by the user.
 
 Implemented in the existing `github-telemetry-local` VS Code project:
 
@@ -28,7 +38,7 @@ The archive is inspected for required project and hidden VS Code/GitHub files, p
 
 The earlier server launch was confirmed by the user's `Discovered 2 tools` log. The new custom agent's picker entry, skill discovery, enabled web tools and actual multi-repository comparison have not yet been exercised in the VS Code chat. Use [the startup guide](TECH-RADAR-START.md) and [acceptance prompts](AGENT-ACCEPTANCE.md).
 
-No general internet-search integration was added or verified. The default discovery path can use the curated catalogue and fetch official URLs when tools permit. Repository/source links are starting points; unreachable documentation is disclosed and functional claims are not presented as freshly verified. Nuxt documentation could not be retrieved during source research; its official GitHub repository corroborated its application-framework role.
+Historical note from before the current Exa/Tavily setup: no general internet-search integration had been added or verified. At that time, the default path used the curated catalogue and fetched official URLs when tools permitted. Repository/source links were starting points; unreachable documentation was disclosed and functional claims were not presented as freshly verified. Nuxt documentation could not be retrieved during source research; its official GitHub repository corroborated its application-framework role.
 
 No GitHub remote was created and no files were pushed. The existing `src/` layout was preserved to avoid breaking the working MCP entrypoint. Hosted publication remains outside this local workflow update and subject to the previously reported Sites administrator restriction.
 

@@ -9,7 +9,7 @@ Use the configured `github-telemetry` MCP server for public github.com repositor
 
 ## Choose and call the tools
 
-Confirm the canonical `owner/repo` using official project links or the project's curated catalogue. A documentation repository, tutorial, fork or similarly named package can produce valid metrics for the wrong project.
+Confirm the canonical `owner/repo` using live search results checked against the official project site, documentation, or organization. A documentation repository, tutorial, fork or similarly named package can produce valid metrics for the wrong project.
 
 | Tool | Input | Useful output |
 |---|---|---|

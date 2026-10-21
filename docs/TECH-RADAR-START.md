@@ -1,63 +1,57 @@
 # Use the Tech Radar agent in VS Code
 
-The working project now contains a **Tech Radar** custom agent and a **github-telemetry** skill. The MCP server still exposes the same two tools. No additional dependency installation is needed for these instructions.
+The project contains a **Tech Radar** agent, a **web-discovery** skill for public-web research, and the existing **github-telemetry** skill for public GitHub measurements. Discovery tries Exa first, Tavily second, then the saved technology catalogue as an explicitly offline fallback. The order and enable/disable switches are in `discovery/providers.json`.
 
 ## Start a comparison
 
-1. Keep this project folder open in VS Code and confirm `github-telemetry` is running with two tools discovered.
-2. Open a **new chat**. In the agent picker (where you selected Agent), choose **Tech Radar**.
-3. If it is not listed, run **Developer: Reload Window**, then open a new chat. Check **Chat: Open Customizations** to inspect the workspace agent and skill. Older versions may expose these options under Configure Custom Agents.
-4. In the tools picker, check that file reading, the two GitHub Telemetry tools and any available web research tools are enabled. Tool identifiers and available tool sets depend on the VS Code agent harness. If a tool is missing, use the agent editor's Configure Tools action and select the real installed tool; do not invent tool names.
-5. Start with this request:
+1. Keep this project folder open in VS Code.
+2. Open a new chat and choose **Tech Radar** in the agent picker.
+3. If it is not listed, run **Developer: Reload Window**, then open a new chat. Check **Chat: Open Customizations** to inspect the workspace agent, skills, and MCP servers.
+4. In the tools picker, confirm that Exa (`web_search_exa`, `web_fetch_exa`), Tavily (`tavily-search`, `tavily-extract`), and both GitHub Telemetry tools are enabled. Sign in to Exa if VS Code prompts you. If a tool is missing, check the MCP server and its output.
+5. Try this request:
 
-> Evaluate React for an internal web dashboard. Our team knows JavaScript and we need interactive charts. Compare it with three relevant alternatives. Use the same 30-day period for GitHub Telemetry and explain any partial results.
+> Evaluate React for an internal web dashboard. Our team knows JavaScript and needs interactive charts. Find three relevant alternatives using current web sources. Compare functionality separately from GitHub activity over the same 30-day period, and say when company compatibility has not been assessed.
 
-The agent should explain why the alternatives fit this use case, call both tools for each confirmed repository, and separate functional fit from GitHub activity.
+The agent should search the web for candidates, check official project sources, confirm canonical repositories, and then call both GitHub Telemetry tools for each confirmed public repository.
 
-Next, try:
+If you ask only “Compare React and similar tools,” the agent should ask what you want to build before searching for alternatives or collecting telemetry.
 
-> Compare React and similar tools.
+## How discovery works
 
-This should produce a question about what you want to build before any shortlist or telemetry calls.
+Exa is the primary live provider. Its hosted MCP server supports Exa OAuth sign-in, which lets you use the account's free monthly credits without putting an API key in the repository. Tavily is the next provider if Exa is unavailable, rate-limited, or produces no usable candidates. Tavily currently runs in keyless mode and may also be limited. If both live providers fail, the agent uses `discovery/technology-catalogue.json` for candidate names and saved official links, labels discovery as offline, and includes that catalogue's review date. It does not present saved candidates as newly researched. See [Exa MCP setup](https://exa.ai/mcp), [Exa pricing](https://exa.ai/pricing), and [Tavily MCP setup](https://docs.tavily.com/documentation/mcp).
 
-## What discovery can do today
+Tech Radar checks functional claims against official documentation and confirms GitHub repositories from official project sources. Search results help it discover candidates; they are not proof by themselves. If search is unavailable, it says live discovery could not be completed rather than using an old list or model memory as if it were current research.
 
-The project includes a **curated catalogue of 13 technologies** for web UI, server-rendered websites and cross-platform mobile. It includes official documentation links and canonical repositories.
+## Company context later
 
-The agent's `web` tool set may provide URL fetching without general internet search. Its `search` tool set normally searches the workspace. Neither should be described as an internet competitor search. The agent must report which discovery method it actually used.
+The current workflow compares public technologies for the use case you describe. It does not know which tools your company already uses or approves. Later, an approved internal source—such as an architecture standards document or technology inventory—can be added as a separate company-fit step after the public comparison. Keep confidential company details out of public Exa and Tavily queries.
 
-If genuine web search is available in your installation and enabled for this agent, the workflow can use it to extend the catalogue's suggestions. No new search integration has been installed here. Without it, comparisons use the curated catalogue and the official links it supplies. For unknown technologies, the agent may ask for an official link instead of guessing.
-
-The shortlist is a use-case-specific proposal, not an exhaustive market survey. Official documentation supports functional claims; the two MCP tools supply current repository measurements.
-
-## Files and future capabilities
+## Project files
 
 ```text
 .github/
   agents/tech-radar.agent.md
   skills/github-telemetry/SKILL.md
-discovery/technology-catalogue.json
-src/                         # existing GitHub tool implementations
-tests/                       # existing MCP and GitHub tests
+  skills/web-discovery/SKILL.md
+.mcp.json                     # Exa and Tavily remote search connections for Copilot agents
+.vscode/mcp.json              # Local GitHub Telemetry server
+discovery/providers.json      # Provider enable switches and fallback order
+discovery/technology-catalogue.json # Offline fallback candidates and official links
+src/                          # GitHub Telemetry implementation
+tests/                        # Existing MCP and GitHub tests
 docs/AGENT-ACCEPTANCE.md
 ```
 
-This is one project folder suitable for one Git repository. The current conversation has not created a remote repository or pushed anything to GitHub. Future tool implementations can get their own folders; keeping the existing `src/` paths avoids breaking your working MCP launch configuration.
+The agent is configured for read-only research. The GitHub Telemetry server still provides the same two tools: repository details and recent commit activity.
 
-Skills live in `.github/skills/` because VS Code discovers that location. For each future capability, add a skill describing its inputs, useful results and interpretation, then let the agent route to it. A skill can cover multiple related tools, as the telemetry skill does. It is not necessary to duplicate a skill for every individual API endpoint.
+## Limits
 
-The custom agent currently enables `read`, `search`, `web` and `github-telemetry/*` using the documented VS Code tool-set syntax. Other harnesses may use different identifiers; the tools picker is the final check of what is available. The agent is instructed to perform read-only research.
-
-## Scope and limits
-
-The skill handles partial counts, rate limits, inaccessible repositories and comparison periods. There are no stored example metrics to mistake for live measurements.
-
-This first milestone does not assign Tech Radar rings, security conclusions, license-compliance decisions or longevity scores. Those need your organization's policy and additional evidence; the two current tools cannot establish them.
-
-Files and behavior have been checked separately from real execution in your Copilot chat. Use the acceptance prompts below to confirm the actual selected agent, skill and tool calls in your VS Code setup.
+GitHub stars, forks, and commits do not establish security, license compliance, maintainer count, release freshness, issue-resolution speed, or performance. Tech Radar does not assign Adopt/Trial/Assess/Hold rings or a security verdict from these metrics. Company policy and internal compatibility are not evaluated until an approved company source is connected.
 
 ## References
 
 - [VS Code custom agents](https://code.visualstudio.com/docs/agent-customization/custom-agents)
-- [Custom agent file and tool names](https://code.visualstudio.com/docs/agents/reference/custom-agent-file-reference)
-- [VS Code Agent Skills and supported locations](https://code.visualstudio.com/docs/agent-customization/agent-skills)
+- [VS Code MCP servers](https://code.visualstudio.com/docs/agent-customization/mcp-servers)
+- [Exa MCP server](https://exa.ai/mcp)
+- [Exa free plan](https://exa.ai/pricing)
+- [Tavily MCP server](https://docs.tavily.com/documentation/mcp)

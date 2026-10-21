@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "fallback_order": ["exa", "tavily", "local_catalogue"],
+  "providers": {
+    "exa": {
+      "enabled": true,
+      "mcp_server": "exa",
+      "search_tool": "web_search_exa",
+      "fetch_tool": "web_fetch_exa"
+    },
+    "tavily": {
+      "enabled": true,
+      "mcp_server": "tavily",
+      "search_tool": "tavily-search",
+      "fetch_tool": "tavily-extract"
+    },
+    "local_catalogue": {
+      "enabled": true,
+      "mode": "offline",
+      "file": "discovery/technology-catalogue.json"
+    }
+  }
+}

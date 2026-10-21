@@ -1,6 +1,6 @@
 # GitHub Telemetry — Windows et VS Code
 
-**Nouveau :** l’agent **Tech Radar**, sa skill GitHub Telemetry et un catalogue de technologies sont maintenant inclus. Pour comparer une technologie selon ton cas d’usage, voir le [guide Tech Radar](docs/TECH-RADAR-START.md). Le lancement des deux outils ci-dessous reste identique.
+**Nouveau :** l’agent **Tech Radar** cherche d’abord avec Exa, puis utilise Tavily si Exa est indisponible ou limité. Si les deux échouent, il peut consulter le catalogue JSON local, clairement indiqué comme source hors ligne. L’ordre et l’activation des sources se règlent dans `discovery/providers.json`. Pour le démarrer dans VS Code, voir le [guide Tech Radar](docs/TECH-RADAR-START.md). Le lancement des outils GitHub Telemetry reste identique.
 
 Deux outils pour les dépôts GitHub **publics** : statistiques du dépôt et activité des commits. Aucune clé GitHub à configurer.
 
