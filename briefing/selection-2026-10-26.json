@@ -1,0 +1,112 @@
+{
+  "retrieved_on": "2026-10-26",
+  "metric": "npm download count",
+  "window_start": "2026-10-16",
+  "window_end": "2026-10-22",
+  "candidates": [
+    {
+      "name": "react",
+      "group": "frontend",
+      "downloads": 123680288,
+      "selected": true,
+      "source": "https://api.npmjs.org/downloads/point/last-week/react"
+    },
+    {
+      "name": "preact",
+      "group": "frontend",
+      "downloads": 24943949,
+      "selected": true,
+      "source": "https://api.npmjs.org/downloads/point/last-week/preact"
+    },
+    {
+      "name": "vue",
+      "group": "frontend",
+      "downloads": 11038721,
+      "selected": true,
+      "source": "https://api.npmjs.org/downloads/point/last-week/vue"
+    },
+    {
+      "name": "jquery",
+      "group": "frontend",
+      "downloads": 8843640,
+      "selected": true,
+      "source": "https://api.npmjs.org/downloads/point/last-week/jquery"
+    },
+    {
+      "name": "solid-js",
+      "group": "frontend",
+      "downloads": 4931077,
+      "selected": true,
+      "source": "https://api.npmjs.org/downloads/point/last-week/solid-js"
+    },
+    {
+      "name": "express",
+      "group": "backend",
+      "downloads": 93967835,
+      "selected": true,
+      "source": "https://api.npmjs.org/downloads/point/last-week/express"
+    },
+    {
+      "name": "hono",
+      "group": "backend",
+      "downloads": 48012759,
+      "selected": true,
+      "source": "https://api.npmjs.org/downloads/point/last-week/hono"
+    },
+    {
+      "name": "@nestjs/core",
+      "group": "backend",
+      "downloads": 10409679,
+      "selected": true,
+      "source": "https://api.npmjs.org/downloads/point/last-week/%40nestjs%2Fcore"
+    },
+    {
+      "name": "fastify",
+      "group": "backend",
+      "downloads": 10082280,
+      "selected": true,
+      "source": "https://api.npmjs.org/downloads/point/last-week/fastify"
+    },
+    {
+      "name": "koa",
+      "group": "backend",
+      "downloads": 4567786,
+      "selected": true,
+      "source": "https://api.npmjs.org/downloads/point/last-week/koa"
+    },
+    {
+      "name": "@angular/core",
+      "group": "frontend",
+      "downloads": 3633419,
+      "selected": false,
+      "source": "https://api.npmjs.org/downloads/point/last-week/%40angular%2Fcore"
+    },
+    {
+      "name": "svelte",
+      "group": "frontend",
+      "downloads": 4471557,
+      "selected": false,
+      "source": "https://api.npmjs.org/downloads/point/last-week/svelte"
+    },
+    {
+      "name": "lit",
+      "group": "frontend",
+      "downloads": 4381290,
+      "selected": false,
+      "source": "https://api.npmjs.org/downloads/point/last-week/lit"
+    },
+    {
+      "name": "@hapi/hapi",
+      "group": "backend",
+      "downloads": 790115,
+      "selected": false,
+      "source": "https://api.npmjs.org/downloads/point/last-week/%40hapi%2Fhapi"
+    }
+  ],
+  "limitations": [
+    "Downloads include CI, transitive installs and repeat downloads; they are not unique users or production deployments.",
+    "Candidate set is deliberately limited to independent browser UI choices and backend web frameworks in npm. Renderers, build tooling, middleware-only packages and other languages are outside this selection.",
+    "The watchlist tracks the selected package identities, not every companion package or transitive dependency.",
+    "Installed versions were not supplied. Applicability to user applications remains unknown."
+  ]
+}

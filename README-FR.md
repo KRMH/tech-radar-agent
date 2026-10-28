@@ -1,5 +1,9 @@
 # GitHub Telemetry — Windows et VS Code
 
+**Veille bibliothèques :** une skill dédiée prépare une synthèse sécurité et actualités pour cinq projets frontend et cinq backend. Elle distingue les nouveautés des éléments déjà signalés et rend visibles les échecs de collecte. Voir le [guide Daily Library Briefing](docs/LIBRARY-BRIEFING-START.md).
+
+**Compte rendu de réunion :** une skill indépendante transforme des notes ou une transcription en brouillon structuré, avec décisions, actions, responsables, échéances et points à confirmer. Voir le [guide Minutes of Meeting](docs/MEETING-MINUTES-START.md). Aucune connexion GitHub ni recherche web n'est nécessaire pour cette fonction.
+
 **Nouveau :** l’agent **Tech Radar** cherche d’abord avec Exa, puis utilise Tavily si Exa est indisponible ou limité. Si les deux échouent, il peut consulter le catalogue JSON local, clairement indiqué comme source hors ligne. L’ordre et l’activation des sources se règlent dans `discovery/providers.json`. Pour le démarrer dans VS Code, voir le [guide Tech Radar](docs/TECH-RADAR-START.md). Le lancement des outils GitHub Telemetry reste identique.
 
 Deux outils pour les dépôts GitHub **publics** : statistiques du dépôt et activité des commits. Aucune clé GitHub à configurer.

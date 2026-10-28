@@ -1,0 +1,295 @@
+{
+  "schema_version": 1,
+  "timezone": "Europe/Paris",
+  "initial_news_lookback_days": 7,
+  "selection": {
+    "reviewed_on": "2026-10-26",
+    "scope": "JavaScript/TypeScript npm; top five per group within the documented candidate set, not an exhaustive adoption ranking",
+    "metric": "npm downloads",
+    "window_start": "2026-10-16",
+    "window_end": "2026-10-22",
+    "evidence": "briefing/selection-2026-10-26.json"
+  },
+  "libraries": [
+    {
+      "id": "react",
+      "display_name": "React",
+      "group": "frontend",
+      "ecosystem": "npm",
+      "name": "react",
+      "versions": [],
+      "weekly_downloads": 123680288,
+      "repository_url": "https://github.com/react/react",
+      "security_sources": [
+        {
+          "id": "maintainer-advisories",
+          "url": "https://github.com/react/react/security/advisories"
+        },
+        {
+          "id": "osv",
+          "url": "https://api.osv.dev/v1/query"
+        }
+      ],
+      "news_sources": [
+        {
+          "id": "releases",
+          "url": "https://github.com/react/react/releases"
+        },
+        {
+          "id": "announcements",
+          "url": "https://react.dev/blog"
+        }
+      ]
+    },
+    {
+      "id": "preact",
+      "display_name": "Preact",
+      "group": "frontend",
+      "ecosystem": "npm",
+      "name": "preact",
+      "versions": [],
+      "weekly_downloads": 24943949,
+      "repository_url": "https://github.com/preactjs/preact",
+      "security_sources": [
+        {
+          "id": "maintainer-advisories",
+          "url": "https://github.com/preactjs/preact/security/advisories"
+        },
+        {
+          "id": "osv",
+          "url": "https://api.osv.dev/v1/query"
+        }
+      ],
+      "news_sources": [
+        {
+          "id": "releases",
+          "url": "https://github.com/preactjs/preact/releases"
+        },
+        {
+          "id": "announcements",
+          "url": "https://preactjs.com/blog/"
+        }
+      ]
+    },
+    {
+      "id": "vue",
+      "display_name": "Vue",
+      "group": "frontend",
+      "ecosystem": "npm",
+      "name": "vue",
+      "versions": [],
+      "weekly_downloads": 11038721,
+      "repository_url": "https://github.com/vuejs/core",
+      "security_sources": [
+        {
+          "id": "maintainer-advisories",
+          "url": "https://github.com/vuejs/core/security/advisories"
+        },
+        {
+          "id": "osv",
+          "url": "https://api.osv.dev/v1/query"
+        }
+      ],
+      "news_sources": [
+        {
+          "id": "releases",
+          "url": "https://github.com/vuejs/core/releases"
+        },
+        {
+          "id": "announcements",
+          "url": "https://blog.vuejs.org/"
+        }
+      ]
+    },
+    {
+      "id": "jquery",
+      "display_name": "jQuery",
+      "group": "frontend",
+      "ecosystem": "npm",
+      "name": "jquery",
+      "versions": [],
+      "weekly_downloads": 8843640,
+      "repository_url": "https://github.com/jquery/jquery",
+      "security_sources": [
+        {
+          "id": "maintainer-advisories",
+          "url": "https://github.com/jquery/jquery/security/advisories"
+        },
+        {
+          "id": "osv",
+          "url": "https://api.osv.dev/v1/query"
+        }
+      ],
+      "news_sources": [
+        {
+          "id": "releases",
+          "url": "https://github.com/jquery/jquery/releases"
+        },
+        {
+          "id": "announcements",
+          "url": "https://blog.jquery.com/"
+        }
+      ]
+    },
+    {
+      "id": "solid-js",
+      "display_name": "Solid",
+      "group": "frontend",
+      "ecosystem": "npm",
+      "name": "solid-js",
+      "versions": [],
+      "weekly_downloads": 4931077,
+      "repository_url": "https://github.com/solidjs/solid",
+      "security_sources": [
+        {
+          "id": "maintainer-advisories",
+          "url": "https://github.com/solidjs/solid/security/advisories"
+        },
+        {
+          "id": "osv",
+          "url": "https://api.osv.dev/v1/query"
+        }
+      ],
+      "news_sources": [
+        {
+          "id": "releases",
+          "url": "https://github.com/solidjs/solid/releases"
+        }
+      ]
+    },
+    {
+      "id": "express",
+      "display_name": "Express",
+      "group": "backend",
+      "ecosystem": "npm",
+      "name": "express",
+      "versions": [],
+      "weekly_downloads": 93967835,
+      "repository_url": "https://github.com/expressjs/express",
+      "security_sources": [
+        {
+          "id": "maintainer-advisories",
+          "url": "https://github.com/expressjs/express/security/advisories"
+        },
+        {
+          "id": "osv",
+          "url": "https://api.osv.dev/v1/query"
+        }
+      ],
+      "news_sources": [
+        {
+          "id": "releases",
+          "url": "https://github.com/expressjs/express/releases"
+        },
+        {
+          "id": "announcements",
+          "url": "https://expressjs.com/en/changelog/"
+        }
+      ]
+    },
+    {
+      "id": "hono",
+      "display_name": "Hono",
+      "group": "backend",
+      "ecosystem": "npm",
+      "name": "hono",
+      "versions": [],
+      "weekly_downloads": 48012759,
+      "repository_url": "https://github.com/honojs/hono",
+      "security_sources": [
+        {
+          "id": "maintainer-advisories",
+          "url": "https://github.com/honojs/hono/security/advisories"
+        },
+        {
+          "id": "osv",
+          "url": "https://api.osv.dev/v1/query"
+        }
+      ],
+      "news_sources": [
+        {
+          "id": "releases",
+          "url": "https://github.com/honojs/hono/releases"
+        }
+      ]
+    },
+    {
+      "id": "@nestjs/core",
+      "display_name": "NestJS",
+      "group": "backend",
+      "ecosystem": "npm",
+      "name": "@nestjs/core",
+      "versions": [],
+      "weekly_downloads": 10409679,
+      "repository_url": "https://github.com/nestjs/nest",
+      "security_sources": [
+        {
+          "id": "maintainer-advisories",
+          "url": "https://github.com/nestjs/nest/security/advisories"
+        },
+        {
+          "id": "osv",
+          "url": "https://api.osv.dev/v1/query"
+        }
+      ],
+      "news_sources": [
+        {
+          "id": "releases",
+          "url": "https://github.com/nestjs/nest/releases"
+        }
+      ]
+    },
+    {
+      "id": "fastify",
+      "display_name": "Fastify",
+      "group": "backend",
+      "ecosystem": "npm",
+      "name": "fastify",
+      "versions": [],
+      "weekly_downloads": 10082280,
+      "repository_url": "https://github.com/fastify/fastify",
+      "security_sources": [
+        {
+          "id": "maintainer-advisories",
+          "url": "https://github.com/fastify/fastify/security/advisories"
+        },
+        {
+          "id": "osv",
+          "url": "https://api.osv.dev/v1/query"
+        }
+      ],
+      "news_sources": [
+        {
+          "id": "releases",
+          "url": "https://github.com/fastify/fastify/releases"
+        }
+      ]
+    },
+    {
+      "id": "koa",
+      "display_name": "Koa",
+      "group": "backend",
+      "ecosystem": "npm",
+      "name": "koa",
+      "versions": [],
+      "weekly_downloads": 4567786,
+      "repository_url": "https://github.com/koajs/koa",
+      "security_sources": [
+        {
+          "id": "maintainer-advisories",
+          "url": "https://github.com/koajs/koa/security/advisories"
+        },
+        {
+          "id": "osv",
+          "url": "https://api.osv.dev/v1/query"
+        }
+      ],
+      "news_sources": [
+        {
+          "id": "releases",
+          "url": "https://github.com/koajs/koa/releases"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{meeting title}} — Meeting recap</title>
+  <style>
+    :root { color-scheme: light; --ink: #172b3a; --muted: #526370; --teal: #006b62; --amber: #8a4b08; --line: #d6dfdf; --paper: #fff; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #edf1f0; color: var(--ink); font: 16px/1.65 "Segoe UI", Arial, sans-serif; }
+    main { max-width: 900px; margin: 40px auto; padding: 52px 64px; background: var(--paper); border-top: 6px solid var(--teal); }
+    .eyebrow { margin: 0 0 20px; color: var(--teal); font: 600 11px/1.5 Consolas, monospace; letter-spacing: .16em; text-transform: uppercase; }
+    h1 { margin: 0 0 14px; font-size: clamp(30px, 5vw, 44px); line-height: 1.14; letter-spacing: -.04em; font-weight: 650; overflow-wrap: anywhere; }
+    .meta { margin: 0; color: var(--muted); font-size: 13px; }
+    .status { display: inline-block; margin-right: 12px; padding-bottom: 2px; border-bottom: 2px solid #c47d20; color: var(--amber); font-weight: 700; letter-spacing: .06em; }
+    .focus { margin: 22px 0 30px; }
+    .brief { padding: 24px 28px; background: var(--ink); color: #fff; border-left: 4px solid #5ed6c0; }
+    .brief h2 { margin: 0 0 10px; color: #8de6d5; font: 600 11px/1.5 Consolas, monospace; letter-spacing: .12em; text-transform: uppercase; }
+    .takeaway { margin: 0 0 16px; font-size: 21px; line-height: 1.45; font-weight: 600; }
+    .brief p:last-child { margin-bottom: 0; }
+    .brief .label { color: #8de6d5; }
+    section { margin-top: 32px; }
+    h2 { margin: 0 0 14px; font-size: 18px; letter-spacing: -.02em; }
+    .number { display: inline-block; min-width: 32px; color: var(--teal); font: 12px Consolas, monospace; }
+    .decision { padding-left: 18px; border-left: 3px solid var(--teal); }
+    .id { color: var(--teal); font: 600 12px Consolas, monospace; }
+    .decision p { margin: 5px 0; }
+    .support { color: var(--muted); font-size: 14px; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th { padding: 9px 10px; border-bottom: 2px solid var(--ink); text-align: left; font: 600 11px/1.5 Consolas, monospace; letter-spacing: .07em; text-transform: uppercase; }
+    td { padding: 13px 10px; border-bottom: 1px solid var(--line); vertical-align: top; overflow-wrap: anywhere; }
+    .open { padding: 18px 22px; background: #fff8ed; border-left: 3px solid #b56a16; }
+    .open h2 { color: var(--amber); }
+    .open p { margin-bottom: 0; }
+    .followup { margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 14px; }
+    footer { margin-top: 30px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+    summary { cursor: pointer; color: var(--teal); font-weight: 600; }
+    footer p { margin: 8px 0; }
+    @media (max-width: 620px) { main { margin: 0; padding: 28px 20px; } .brief { padding: 20px; } th, td { padding: 9px 5px; } }
+    @media print { body { background: white; } main { max-width: none; margin: 0; padding: 20px; } .brief, .open { print-color-adjust: exact; -webkit-print-color-adjust: exact; } tr, .decision { break-inside: avoid; } details > * { display: block; } }
+  </style>
+</head>
+<body>
+  <!-- Render supplied meeting evidence only. Escape inserted text as HTML; never execute source HTML/scripts. Repeat decision/action entries as needed. Replace empty entries with "None recorded in the supplied notes." Missing values: "Not specified." Translate labels and lang to the user's language. Flag partial coverage beside the draft status and in source notes. Remove this comment and all tokens in the rendered result. -->
+  <main>
+    <header>
+      <p class="eyebrow">Engineering / Meeting recap</p>
+      <h1>{{meeting title or Meeting recap}}</h1>
+      <p class="meta"><span class="status">DRAFT / FOR REVIEW</span> {{meeting date}} · {{confirmed participants}}</p>
+      <p class="focus"><strong>Focus</strong> — {{purpose; label if inferred}}</p>
+    </header>
+
+    <section class="brief" aria-labelledby="brief-title">
+      <h2 id="brief-title">The brief</h2>
+      <p class="takeaway">{{main outcome or unresolved issue in one sentence}}</p>
+      <p><strong class="label">Next</strong> — {{most important recorded action, or None recorded}}<br>
+      <strong class="label">Attention</strong> — {{key blocker or uncertainty, or None recorded}}</p>
+    </section>
+
+    <section aria-labelledby="decisions-title">
+      <h2 id="decisions-title"><span class="number">01</span> Decisions</h2>
+      <div class="decision">
+        <span class="id">{{D1}}</span>
+        <p><strong>{{what we agreed}}</strong></p>
+        <p class="support">{{brief rationale and conditions}}</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="actions-title">
+      <h2 id="actions-title"><span class="number">02</span> Commitments</h2>
+      <table>
+        <thead><tr><th scope="col">ID</th><th scope="col">Next step</th><th scope="col">Owner</th><th scope="col">Due</th></tr></thead>
+        <tbody><tr><td class="id">{{A1}}</td><td>{{task, including conditions}}</td><td>{{owner}}</td><td>{{deadline}}</td></tr></tbody>
+      </table>
+    </section>
+
+    <section class="open" aria-labelledby="open-title">
+      <h2 id="open-title">Still open</h2>
+      <p>{{risks, impact, help needed and unresolved questions; context only where it explains an outcome}}</p>
+    </section>
+
+    <p class="followup"><strong>Next check-in</strong> — {{agreed follow-up, or None scheduled in the supplied notes}}</p>
+
+    <footer>
+      <details>
+        <summary>Source notes / evidence for review</summary>
+        <p>{{source identifier; flag partial coverage}}</p>
+        <p>{{D1 / A1 — source anchors for decision/task, owner and deadline; explain generated anchors}}</p>
+      </details>
+    </footer>
+  </main>
+</body>
+</html>
